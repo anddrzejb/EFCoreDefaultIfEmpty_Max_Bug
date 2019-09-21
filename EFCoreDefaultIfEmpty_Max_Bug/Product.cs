@@ -9,16 +9,6 @@ namespace EFCoreDefaultIfEmpty_Max_Bug.Ext
     public partial class Product
     {
         public int Version { get; set; }
-        [Column(TypeName = "date")]
-        public DateTime? ImporDate { get; set; }
-        [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
-        [Required]
-        [StringLength(50)]
-        public string Description { get; set; }
-
-        
-        [InverseProperty(nameof(Ext.Category.Products))]
-        public virtual Category Category { get; set; }
+        public int CategoryId { get; set; }        
     }
 }

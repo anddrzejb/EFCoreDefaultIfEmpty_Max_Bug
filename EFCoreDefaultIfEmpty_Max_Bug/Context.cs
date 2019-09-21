@@ -15,7 +15,6 @@ namespace EFCoreDefaultIfEmpty_Max_Bug.Ext
         {
         }
 
-        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,11 +35,6 @@ namespace EFCoreDefaultIfEmpty_Max_Bug.Ext
 
                 entity.Property(e => e.Version).ValueGeneratedNever();
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_tmpExtProduct_tmpExtCategory");
             });
 
             OnModelCreatingPartial(modelBuilder);
